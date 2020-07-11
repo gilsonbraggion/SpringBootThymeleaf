@@ -11,12 +11,13 @@ import com.rhinosistemas.model.Pessoa;
 import com.rhinosistemas.repository.PessoaRepository;
 
 @Controller
-@RequestMapping(value = "pessoas")
+@RequestMapping(value = "/pessoas")
 public class PessoaController {
 
 	@Autowired
 	private PessoaRepository repository;
 	
+	@RequestMapping(value = "/listagem")
 	public String pessoas(Model model) {
 		
 		List<Pessoa> pessoas = repository.findAll();
@@ -24,6 +25,20 @@ public class PessoaController {
 		model.addAttribute("listagem", pessoas);
 		
 		return "pessoas/listagem";
+	}
+
+	@RequestMapping(value = "/novo")
+	public String novo(Model model, Pessoa pessoa) {
+		
+		return "pessoas/cadastrar";
+	}
+	
+	@RequestMapping(value = "/cadastrar")
+	public String cadastrar(Model model, Pessoa pessoa) {
+		
+		repository.save(pessoa);
+		
+		return "redirect:/pessoas/listagem";
 	}
 	
 }

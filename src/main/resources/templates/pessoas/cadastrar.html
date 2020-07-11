@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listagem de pessoas</title>
+</head>
+<body>
+
+<a th:href="@{/pessoas/listagem}">Listagem</a>
+	
+	<form th:action="@{/pessoas/cadastrar}" th:object="${pessoa}" method="post">
+		
+		<label>Nome</label>
+		<br />
+		<input type="text" th:field="*{nome}"/>
+		<br />
+		<br />
+		<br />
+		<button type="submit" >Salvar</button>
+		
+	</form>
+	
+</body>
+</html>

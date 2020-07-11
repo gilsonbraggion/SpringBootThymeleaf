@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Listagem de pessoas</title>
 </head>
 <body>
+
+<a th:href="@{/pessoas/novo}">Cadastrar</a>
 	
-	
+<table style="width:100%">
+  <tr>
+    <th>Nome</th>
+  </tr>
+  <tr th:each="item : ${listagem}">
+    <td th:utext="${item.nome}"></td>
+  </tr>
+</table>	
 	
 </body>
 </html>
